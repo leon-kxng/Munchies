@@ -12,7 +12,7 @@
     height: 550px;
     width: 35%;
     box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
-    padding-top: 30px;
+    padding-top: 50px;
     border-radius: 60px; 
     background-color: white;
   }
@@ -22,7 +22,7 @@
       display: flex;
     }
   .container-image {
-    background-color: rgb(223, 221, 221); 
+    background-color: #e31f1f; 
     border-radius: 150px;
     align-items: center;
     display: flex;
@@ -43,12 +43,12 @@
       box-shadow: inset 0px 0px 25px 0px #888;
       border: none;
       outline: none;
-      background-color: #fff;
+      background-color: #faf6f6;
   }
 
   .email{
       height: 25px;
-      width: 25px;
+      width: 35px;
       position: absolute;
       padding: 14px 0 0 25px;
   }
@@ -65,8 +65,8 @@
       width: 380px;
       height: 50px;
       border-radius: 60px;
-      background-color: #b103fc;
-      color: white;
+      background-color: #57e70f;
+      color: rgb(14, 14, 14);
       font-size: 25px;
       border: none;
   }
@@ -79,6 +79,6 @@
       font-weight: 400;
   }
    a{
-       color: blue;
+       color: rgb(19, 43, 223);
        text-decoration: none;
    }
