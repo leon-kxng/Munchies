@@ -4,7 +4,7 @@
     display: flex; 
     padding-top: 90px;
     padding-bottom: 90px;
-    background-color: #9eca1c;
+    background-color: #dfd2d2;
   }
   .sub-main {
     display: flex;
@@ -22,7 +22,7 @@
       display: flex;
     }
   .container-image {
-    background-color: #e31f1f; 
+    background-color: #141313; 
     border-radius: 150px;
     align-items: center;
     display: flex;
@@ -65,13 +65,14 @@
       width: 380px;
       height: 50px;
       border-radius: 60px;
-      background-color: #57e70f;
+      background-color: #61d157;
       color: rgb(14, 14, 14);
       font-size: 25px;
       border: none;
+      text-align: center;
   }
   .login-button{
-      padding-top: 25px;
+      padding-top: 15px;
   }
 
   .link{
@@ -81,4 +82,5 @@
    a{
        color: rgb(19, 43, 223);
        text-decoration: none;
+       text-align: left;
    }

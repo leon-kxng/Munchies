@@ -27,11 +27,12 @@ const Login=()=> {
            </div>
           <div className="login-button">
           <button>Login</button>
+          
           </div>
 
             <p className="link">
-              <a href="#">Forgot password </a> <br/><br/>
-              <a href="#">SIGN UP</a>
+              <a href="#">SIGN UP </a> <br></br> <br></br>
+              <a href="#">FORGOT PASSWORD</a>
             </p>
 
 
