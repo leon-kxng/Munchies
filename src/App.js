@@ -27,16 +27,18 @@ function App() {
     );
     setFilteredProducts(filteredProductsBySearch);
   };
-  
 
   return (
     <div className="App">
       <CartProvider>
         <NavBar products={products} onCategoryChange={handleCategoryChange} onSearch={handleSearch} />
-        <Routes>
-          <Route path='/' element={<Home products={filteredProducts.length > 0 ? filteredProducts : products} />} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes>
+        <div className="container">
+          {/* Set equal padding on both sides */}
+          <Routes>
+            <Route path='/' element={<Home products={filteredProducts.length > 0 ? filteredProducts : products} />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+        </div>
       </CartProvider>
     </div>
   );
