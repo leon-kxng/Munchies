@@ -16,7 +16,7 @@ const Cart = () => {
   if (isEmpty) return <h1>Your Cart is Empty</h1>;
 
   return (
-    <section>
+    <section style={{ backgroundColor: 'rgb(80, 125, 141)' }}>
       <div>
         <div>
           <h5>Cart ({totalUniqueItems}) total Items: ({totalItems})</h5>

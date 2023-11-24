@@ -39,7 +39,7 @@ function NavBar({ onCategoryChange, onSearch }) {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -78,6 +78,7 @@ function NavBar({ onCategoryChange, onSearch }) {
               onChange={handleSearchInput}
               value={searchedProduct}
             />
+            
           </form>
         </div>
       </div>

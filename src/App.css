@@ -1,8 +1,16 @@
+body {
+  background-color: #282c34;
+}
+  
 .App {
   margin-left: 0px;
+  background-color: #282c34;
   
   background-size: cover;
+
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -24,7 +32,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   
-  color: white;
+
 }
 
 .App-link {
@@ -39,19 +47,24 @@
     transform: rotate(360deg);
   }
 }
+
+
  div .container-fluid {
-  background-color: rgb(85, 85, 233);
-  min-height: 60px;
-  border-radius: 7px;
+  background-color: rgb(80, 125, 141);
+  min-height: 70px;
+  border-radius: 15px;
   font-size: 25px;
   width:100% ;
-  padding: 0px;
   padding-left: 120px;
+  padding-right: 120px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 
 
-  
   
  }
+ 
   h1{
     margin-left: 90px;
     font-style: italic;
@@ -63,18 +76,23 @@
     margin-top: 20px;
     margin-left: 100px;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 15px;
     border-width: 0px;
-    box-shadow:3px 3px 15px; 
-  
+    text-align: center;
+    background-color: rgb(80, 125, 141);
   }
   
   li{
     padding-inline-start: 25px;
   }
   select {
-    background-color:rgb(85, 85, 233);
-    border-color: rgb(85, 85, 233);
+    background-color:transparent;
+    border-color: transparent;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding-left: 30px;
+    
   }
 
   .search {
@@ -82,10 +100,15 @@
     font-size: 25px;
     border-radius: 15px;
     text-align: center;
+    
   }
   
+  .container{
+    margin-left: 20px;
+  }
+
+  .card-img-top {
+    border-radius: 15px;
+  }
     
-  
-    
-  
-  
+
