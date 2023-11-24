@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './Pages/Home';
 import NavBar from './Components/NavBar';
@@ -6,42 +6,38 @@ import { Routes, Route } from 'react-router-dom';
 import Cart from './Pages/Cart';
 import { CartProvider } from 'react-use-cart';
 
-
 function App() {
-  const [product, getProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchedProduct, setSearchedProduct] = useState('');
 
   useEffect(() => {
-    fetch(' http://localhost:3001/foods')
+    fetch('https://my-json-server.typicode.com/leon-kxng/Munchies/foods')
       .then((res) => res.json())
-      .then((json) => getProduct(json));
+      .then((data) => setProducts(data));
   }, []);
 
   const handleCategoryChange = (selectedCategory) => {
-    const filteredProductsByCategory = product.filter((product) => product.category === selectedCategory);
+    const filteredProductsByCategory = products.filter((product) => product.category === selectedCategory);
     setFilteredProducts(filteredProductsByCategory);
   };
 
   const handleSearch = (searchedText) => {
-    setSearchedProduct(searchedProduct);
-    const filteredProductsBySearch = product.filter((product) => product.title.toLowerCase().includes(searchedText.toLowerCase()));
+    const filteredProductsBySearch = products.filter((product) => 
+      product.name.toLowerCase().includes(searchedText.toLowerCase())
+    );
     setFilteredProducts(filteredProductsBySearch);
   };
+  
 
   return (
     <div className="App">
-
       <CartProvider>
-      <NavBar products={product} onCategoryChange={handleCategoryChange} onSearch={handleSearch} />
-      <Routes>
-        <Route path='/' element={<Home products={filteredProducts.length > 0 ? filteredProducts : product} />} />
-        <Route path='/cart' element={<Cart />} />
-      </Routes>
-
+        <NavBar products={products} onCategoryChange={handleCategoryChange} onSearch={handleSearch} />
+        <Routes>
+          <Route path='/' element={<Home products={filteredProducts.length > 0 ? filteredProducts : products} />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
       </CartProvider>
-     
-      
     </div>
   );
 }
