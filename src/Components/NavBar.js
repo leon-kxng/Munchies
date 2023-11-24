@@ -4,7 +4,6 @@ function NavBar({ onCategoryChange, onSearch }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [products, setProducts] = useState([]);
   const [searchedProduct, setSearchedProduct] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     // Fetch data from the local server
@@ -27,15 +26,6 @@ function NavBar({ onCategoryChange, onSearch }) {
     setSearchedProduct(inputText);
     onSearch(inputText); // Call onSearch prop with the input text
   };
-
-  useEffect(() => {
-    // Filter products based on the search term
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchedProduct.toLowerCase())
-    );
-    // Update the state with the filtered products
-    setFilteredProducts(filteredProducts);
-  }, [searchedProduct, products]);
 
   const categoryList = (
     <select onChange={handleCategoryChange} value={selectedCategory}>
