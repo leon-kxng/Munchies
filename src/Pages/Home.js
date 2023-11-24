@@ -22,10 +22,12 @@ function Home({ products }) {
   };
 
   return (
-    <div>
+    <div className='container'>
+      {/* Add container class and set padding on the sides */}
       <div className='row'>
         {products.map((product) => (
-          <div className='col-md-3 mb-4' key={product.id}>
+          <div className='col-md-4 mb-4' key={product.id}>
+            {/* Use 'col-md-4' to make each card take up one-third of the container's width */}
             <div className='card h-100'>
               <img
                 src={product.image}
