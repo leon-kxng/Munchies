@@ -33,9 +33,11 @@ function App() {
       <CartProvider>
         <NavBar products={products} onCategoryChange={handleCategoryChange} onSearch={handleSearch} />
         <div className="container">
-          {/* Set equal padding on both sides */}
           <Routes>
-            <Route path='/' element={<Home products={filteredProducts.length > 0 ? filteredProducts : products} />} />
+            <Route
+              path='/'
+              element={<Home products={filteredProducts.length > 0 ? filteredProducts : products} />}
+            />
             <Route path='/cart' element={<Cart />} />
           </Routes>
         </div>
