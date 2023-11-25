@@ -1,9 +1,14 @@
+// NavBar.js
 import React, { useState, useEffect } from 'react';
+import { useCart } from 'react-use-cart';
 
 function NavBar({ onCategoryChange, onSearch }) {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [products, setProducts] = useState([]);
   const [searchedProduct, setSearchedProduct] = useState('');
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { totalItems } = useCart();
+  const [cartHasItems, setCartHasItems] = useState(false);
 
   useEffect(() => {
     // Fetch data from the local server
@@ -12,6 +17,10 @@ function NavBar({ onCategoryChange, onSearch }) {
       .then(data => setProducts(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+
+  useEffect(() => {
+    setCartHasItems(totalItems > 0);
+  }, [totalItems]);
 
   const uniqueCategories = products ? [...new Set(products.map((product) => product.category))] : [];
 
@@ -24,11 +33,15 @@ function NavBar({ onCategoryChange, onSearch }) {
   const handleSearchInput = (e) => {
     const inputText = e.target.value;
     setSearchedProduct(inputText);
-    onSearch(inputText); // Call onSearch prop with the input text
+    onSearch(inputText);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const categoryList = (
-    <select onChange={handleCategoryChange} value={selectedCategory}>
+    <select onChange={handleCategoryChange} value={selectedCategory} className="category-dropdown">
       <option value=''>Categories</option>
       {uniqueCategories.map((category) => (
         <option key={category} value={category}>
@@ -39,46 +52,42 @@ function NavBar({ onCategoryChange, onSearch }) {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={toggleMobileMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb- mb-lg-0">
-            <li className="nav-item">
+        <div className={`navbar-collapse ${isMobileMenuOpen ? 'show-mobile' : 'pc-view'}`}>
+          <ul className="navbar-nav">
+            <li className="nav-item home">
               <a className="nav-link active" href="/">
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item cart">
               <a className="nav-link active" href="/cart">
-                Cart
+                Cart {cartHasItems && <span className="dot"></span>}
               </a>
             </li>
-
-            {categoryList}
           </ul>
 
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search Product"
-              aria-label="Search"
-              onChange={handleSearchInput}
-              value={searchedProduct}
-            />
-            
+          <form className="d-flex search">
+            <div className={`search-and-category ${isMobileMenuOpen ? 'show-on-mobile' : ''}`}>
+              <input
+                className="form-control me-2 search-input search"
+                type="search"
+                placeholder="Search Product"
+                aria-label="Search"
+                onChange={handleSearchInput}
+                value={searchedProduct}
+              />
+              {categoryList}
+            </div>
           </form>
         </div>
       </div>
@@ -87,3 +96,4 @@ function NavBar({ onCategoryChange, onSearch }) {
 }
 
 export default NavBar;
+
