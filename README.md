@@ -4,9 +4,9 @@ This collaborative project aims to develop a user-friendly and efficient food sh
 
 ## Features
 
-### 1. User Authentication
-- Secure login and registration system to ensure user data privacy.
-- Personalized profiles for each user.
+### 1. Search Implementation
+- User can search for the foods in the app.
+- When items are searched for they take up the body of the app
 
 ### 2. Category List Management
 - Enables the user to search and choose from the category list.
